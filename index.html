@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-vindo ao SENAI São Carlos</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+
+</head>
+<body>
+    <h1>Bem-vindo ao SENAI São Carlos</h1>
+    <div class="menu">
+        <button onclick="mostrarInformacoes('mapa')">Mapa SENAI</button>
+        <button onclick="mostrarInformacoes('regras')">Regras Básicas</button>
+        <button onclick="mostrarInformacoes('contatos')">Contatos de Emergência</button>
+        <button onclick="mostrarInformacoes('duvidas')">Dúvidas Frequentes</button>
+        <button onclick="mostrarInformacoes('apoio')">Contato de Apoio</button>
+    </div>
+    
+    <div id="conteudo">
+        <div id="loading" style="display:none;">Carregando...</div>
+        <div id="informacao"></div>
+    </div>
+
+</body>
+</html>
