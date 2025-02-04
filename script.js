@@ -114,5 +114,5 @@ window.onload = function() {
         currentIndex = (currentIndex + 1) % images.length;
         
         images[currentIndex].classList.add('active');
-    }, 8000); // 8000 = 8 seg
+    }, 6000); // 6000 = 6 seg
 };
