@@ -73,13 +73,24 @@ function mostrarInformacoes(tipo) {
             `;
         } else if (tipo === 'contatos') {
             conteudo = `
-                <h2>Contatos de Emergência</h2>
-                <p>Polícia: 190</p>
-                <p>Bombeiros: 193</p>
-                <p>Suporte Técnico: (XX) XXXX-XXXX</p>
+                <h1>Contatos do SENAI</h1>
+                <h3>Dona Carla (ou Carlinha) - Setor de Apoio</h3>
+                <p>+55 16 2106-8723</p>
+
+                <h3>Marília - Setor de Apoio</h3>
+                <p>+55 16 98159-0197</p>
             `;
         } else if (tipo === 'duvidas') {
-            conteudo = "<h2>Dúvidas Frequentes</h2><p>1. Como faço para me matricular?</p><p>2. Onde estão as salas de aula?</p><p>3. O que fazer em caso de emergência?</p>";
+            conteudo = `
+            <h1>Dúvidas Frequentes</h1>
+            <h3>1. O que é setor de apoio?</h3>
+            <p>O setor de apoio é, literalmente, um local de apoio e acolhimento ao aluno. Você pode e deve procurá-lo sempre que tiver dúvidas sobre o funcionamento da escola. Além disso, em caso de problemas, sempre notifique o setor de apoio. Lá, você receberá orientações sobre o que fazer.</p>
+            <p>Resumidamente, é um local onde você poderá ir sem medo de julgamentos. O acolhimento é certo!</p>
+            <h3>2. Posso usar o celular fora do horário de aula?</h3>"
+            <p>Não. Devido a preocupação dos docentes da escola com seus alunos, é permitido usar o celular na estrada e saída. Porém, o uso em sala de aula ou intervalos é, e continua sendo, extritamente proibida!<p>
+
+            ;`
+
         } else if (tipo === 'apoio') {
             conteudo = "<h2>Contato de Apoio</h2><p>Para qualquer ajuda, entre em contato pelo e-mail <a href='mailto:support@senai.com.br'>support@senai.com.br</a></p>";
         }
