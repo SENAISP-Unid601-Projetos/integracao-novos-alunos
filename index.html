@@ -9,13 +9,23 @@
 
 </head>
 <body>
+    <header>
+        <img src="imagens/logoSenaiWhite.png" alt="">
+        <div>
+            <p onclick="mostrarInformacoes('mapa')" class="headerButtons">Mapa</p>
+            <p onclick="mostrarInformacoes('regras')" class="headerButtons">Regras</p>
+            <p onclick="mostrarInformacoes('contatos')" class="headerButtons">Contatos</p>
+            <p onclick="mostrarInformacoes('duvidas')" class="headerButtons">Dúvidas</p>
+            <p onclick="mostrarInformacoes('apoio')" class="headerButtons">Apoio</p>
+        </div>
+    </header>
     <h1>Bem-vindo ao SENAI São Carlos</h1>
-    <div class="menu">
-        <button onclick="mostrarInformacoes('mapa')">Mapa SENAI</button>
-        <button onclick="mostrarInformacoes('regras')">Regras Básicas</button>
-        <button onclick="mostrarInformacoes('contatos')">Contatos de Emergência</button>
-        <button onclick="mostrarInformacoes('duvidas')">Dúvidas Frequentes</button>
-        <button onclick="mostrarInformacoes('apoio')">Contato de Apoio</button>
+
+    <!-- Carrossel de imagens -->
+    <div id="carrossel" class="carrossel-container">
+        <img class="carrossel-img" src="imagens/fotoSenaiUm.jpg" alt="Imagem 1">
+        <img class="carrossel-img" src="imagens/fotoSenaiDois.jpg" alt="Imagem 2">
+        <img class="carrossel-img" src="imagens/fotoSenaiTres.jpg" alt="Imagem 3">
     </div>
     
     <div id="conteudo">

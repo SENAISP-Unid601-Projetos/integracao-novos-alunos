@@ -49,3 +49,20 @@ function mostrarInformacoes(tipo) {
         mostrarLoading(false);
     }, 1000); // Simula um carregamento de 1 segundo
 }
+
+//Function para o carrosel
+
+window.onload = function() {
+    const images = document.querySelectorAll('.carrossel-img');
+    let currentIndex = 0;
+    
+    images[currentIndex].classList.add('active');
+    
+    setInterval(function() {
+        images[currentIndex].classList.remove('active');
+        
+        currentIndex = (currentIndex + 1) % images.length;
+        
+        images[currentIndex].classList.add('active');
+    }, 8000); // 8000 = 8 seg
+};

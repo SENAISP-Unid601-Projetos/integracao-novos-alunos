@@ -1,3 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+header {
+    background-color: #d41508; 
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+header img {
+    width: 10rem;
+}
+
+header div {
+    display: flex;
+    justify-content: center; 
+    gap: 2rem;
+    flex: 1;
+}
+
+.headerButtons {
+    color: #efe3ef; 
+    transition: all ease-in-out 0.3s;
+    cursor: pointer;
+    font-family: "Montserrat", serif;
+    font-size: 1.2rem; 
+    font-weight: 500; 
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.headerButtons:hover {
+    scale: 110%;
+    color: #bdb2bd; 
+}
+
+.headerButtons::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #bdb2bd;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.headerButtons:hover::after {
+    width: 100%;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -43,4 +102,42 @@ h1 {
 #loading {
     font-size: 18px;
     color: #2980b9;
+}
+
+/* Carrossel de imagens */
+.carrossel-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 2rem auto;
+    overflow: hidden;
+}
+
+.carrossel-img {
+    width: 100%;
+    display: none;
+    object-fit: cover;
+    transition: opacity 1s ease-in-out;
+}
+
+.carrossel-img.active {
+    display: block;
+    opacity: 1;
+}
+
+.carrossel-container:hover .carrossel-img {
+    opacity: 0;
+}
+
+/* Animação de transição entre as imagens */
+@keyframes slide {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 }
