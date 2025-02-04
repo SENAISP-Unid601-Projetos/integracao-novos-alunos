@@ -73,7 +73,7 @@ h1 {
     margin: 20px;
 }
 
-.menu button {
+.menu button, #submenu-mapa button {
     padding: 10px 20px;
     margin: 5px;
     font-size: 16px;
@@ -85,7 +85,7 @@ h1 {
     transition: background-color 0.3s;
 }
 
-.menu button:hover {
+.menu button:hover, #submenu-mapa button:hover {
     background-color: #3498db;
 }
 
