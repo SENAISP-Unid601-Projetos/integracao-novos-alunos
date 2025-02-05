@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regras Básicas | SENAI São Carlos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --senai-blue: #0055A4;
+            --accent-yellow: #FFD100;
+            --text-dark: #2D2D2D;
+            --text-light: #FFFFFF;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --section-spacing: 4rem;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: var(--senai-blue);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 50px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-list {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            padding: var(--section-spacing) 2rem;
+        }
+
+        .rules-section {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--senai-blue);
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+        }
+
+        .rules-list {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .rule-card {
+            background: var(--text-light);
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            padding: 2rem;
+            transition: var(--transition);
+        }
+
+        .rule-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .rule-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .rule-icon {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+
+        .rule-title {
+            color: var(--senai-blue);
+            font-size: 1.3rem;
+        }
+
+        .rule-content {
+            padding-left: 3rem;
+        }
+
+        .rule-text {
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--senai-blue);
+            color: var(--text-light);
+            padding: 2rem 1rem;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--accent-yellow);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-yellow);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            background: var(--accent-yellow);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .nav-list {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--senai-blue);
+                flex-direction: column;
+                padding: 1rem;
+                text-align: center;
+            }
+
+            .nav-list.active {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .rule-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .rule-content {
+                padding-left: 0;
+            }
+
+            .rule-icon {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="#" class="logo-link">
+                <img src="/imagens/logoSenaiWhite.png" alt="SENAI São Carlos" class="logo">
+            </a>
+
+            <button class="nav-toggle" aria-label="Abrir menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-list">
+                <li><a href="contato.html" class="nav-link">Contato</a></li>
+                <li><a href="duvidas.html" class="nav-link">Dúvidas</a></li>
+                <li><a href="apoio.html" class="nav-link">Apoio</a></li>
+                <li><a href="regras.html" class="nav-link">Regras Básicas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="rules-section">
+            <h1 class="section-title">Regras Básicas</h1>
+            
+            <div class="rules-list">
+                <!-- Regra 1 - Horários -->
+                <article class="rule-card">
+                    <div class="rule-header">
+                        <img src="imagens/relogio.png" alt="Ícone de relógio" class="rule-icon">
+                        <h3 class="rule-title">Respeitar os horários</h3>
+                    </div>
+                    <div class="rule-content">
+                        <p class="rule-text">
+                            Aqui no SENAI, chegar e sair nos horários combinados é extremamente importante!
+                        </p>
+                        <p class="rule-text">
+                            Além de te valorizar como aluno, demonstra respeito ao docente.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- Regra 2 - Uniforme -->
+                <article class="rule-card">
+                    <div class="rule-header">
+                        <img src="imagens/logo.png" alt="Ícone de uniforme" class="rule-icon">
+                        <h3 class="rule-title">Utilizar uniforme e crachá</h3>
+                    </div>
+                    <div class="rule-content">
+                        <p class="rule-text">
+                            O uso do uniforme e crachá, em lugar visível, faz parte das regras indiscutíveis do SENAI.
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <ul class="footer-links">
+                    <li><a href="tel:+551621068723">(16) 2106-8723</a></li>
+                    <li><a href="mailto:contato@senai.sp.br">contato@senai.sp.br</a></li>
+                    <li>Av. São Carlos, 1234</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="duvidas.html">Dúvidas Frequentes</a></li>
+                    <li><a href="regras.html">Regras Internas</a></li>
+                    <li><a href="apoio.html">Suporte Técnico</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Redes Sociais</h3>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 SENAI São Carlos. Todos os direitos reservados.</p>
+            <p>Desenvolvido com ♥ pela equipe de alunos</p>
+        </div>
+    </footer>
+
+    <script>
+        // Menu Mobile
+        const navToggle = document.querySelector('.nav-toggle');
+        const navList = document.querySelector('.nav-list');
+
+        navToggle.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+
+        // Fechar menu ao clicar em link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navList.classList.remove('active');
+            });
+        });
+
+        // Scroll suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
