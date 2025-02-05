@@ -5,16 +5,15 @@ function mostrarSubmenu(tipo) {
     if (tipo === 'mapa') {
         document.getElementById("submenu-mapa").style.display = "block";
         document.getElementById("informacao").innerHTML = "";
-        document.getElementById("map").style.display = "none";
-    } else{
+        document.getElementById("map").style.display = "block"; // Mudança aqui
+    } else {
         document.getElementById("submenu-mapa").style.display = "none";
         document.getElementById("map").style.display = "none";
     }
 }
-// Função para carregar a planta escolhida
+
 function carregarPlanta(planta) {
     mostrarLoading(true);
-    document.getElementById("map").style.display = "block";
     document.getElementById("informacao").innerHTML = `<h2>Mapa do SENAI - ${planta}</h2>`;
 
     // Remove o mapa existente, se houver
@@ -47,6 +46,7 @@ function carregarPlanta(planta) {
 
     mostrarLoading(false);
 }
+
 
 // Função para exibir ou ocultar o carregamento
 function mostrarLoading(show) {
@@ -87,16 +87,36 @@ function mostrarInformacoes(tipo) {
             `;
         } else if (tipo === 'duvidas') {
             conteudo = `
-            <div id='duvidas'>
-            <h1>Dúvidas Frequentes</h1>
-            <h3>1. O que é setor de apoio?</h3>
-            <p>O setor de apoio é, literalmente, um local de apoio e acolhimento ao aluno. Você pode e deve procurá-lo sempre que tiver dúvidas sobre o funcionamento da escola. Além disso, em caso de problemas, sempre notifique o setor de apoio. Lá, você receberá orientações sobre o que fazer.</p>
-            <p>Resumidamente, é um local onde você poderá ir sem medo de julgamentos. O acolhimento é certo!</p>
-            <h3>2. Posso usar o celular fora do horário de aula?</h3>"
-            <p>Não. Devido a preocupação dos docentes da escola com seus alunos, é permitido usar o celular na estrada e saída. Porém, o uso em sala de aula ou intervalos é, e continua sendo, extritamente proibida!<p>
+            <div id='duvidas' style="background-color: #f5f5f5; padding: 2rem; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); max-width: 800px; margin: 0 auto;">
+                <h1 style="color: #d41508; font-size: 2.5rem; margin-bottom: 1rem; text-align: center;">Dúvidas Frequentes</h1>
+                
+                <div style="background-color: white; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
+                        <i class="fas fa-question-circle" style="color: #d41508; font-size: 1.8rem;"></i>
+                        <h3 style="color: #333; font-size: 1.6rem; font-weight: 600; margin: 0;">1. O que é setor de apoio?</h3>
+                    </div>
+                    <p style="color: #555; line-height: 1.6; font-size: 1rem; margin-top: 0.5rem;">O setor de apoio é, literalmente, um local de apoio e acolhimento ao aluno. Você pode e deve procurá-lo sempre que tiver dúvidas sobre o funcionamento da escola. Além disso, em caso de problemas, sempre notifique o setor de apoio. Lá, você receberá orientações sobre o que fazer.</p>
+                    <p style="color: #555; line-height: 1.6; font-size: 1rem; margin-top: 0.5rem;">Resumidamente, é um local onde você poderá ir sem medo de julgamentos. O acolhimento é certo!</p>
+                </div>
+        
+                <div style="background-color: white; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
+                        <i class="fas fa-question-circle" style="color: #d41508; font-size: 1.8rem;"></i>
+                        <h3 style="color: #333; font-size: 1.6rem; font-weight: 600; margin: 0;">2. Posso usar o celular no intervalo?</h3>
+                    </div>
+                    <p style="color: #555; line-height: 1.6; font-size: 1rem; margin-top: 0.5rem;">Não. Devido a preocupação dos docentes da escola com seus alunos, é permitido usar o celular na estrada e saída. Porém, o uso em sala de aula ou intervalos é, e continua sendo, extritamente proibido!</p>
+                </div>
+        
+                <div style="background-color: white; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
+                        <i class="fas fa-question-circle" style="color: #d41508; font-size: 1.8rem;"></i>
+                        <h3 style="color: #333; font-size: 1.6rem; font-weight: 600; margin: 0;">3. Quantas faltas são permitidas?</h3>
+                    </div>
+                    <p style="color: #555; line-height: 1.6; font-size: 1rem; margin-top: 0.5rem;">É permitido faltar 25% de horas-aula. Porém, não é recomendado faltar com frequência. Não administre faltas, apenas deixe de vir se for necessário.</p>
+                </div>
             </div>
-            `;
-
+            `;            
+        
         } else if (tipo === 'apoio') {
             conteudo = "<div id='apoio'><h2>Contato de Apoio</h2><p>Para qualquer ajuda, entre em contato pelo e-mail <a href='mailto:support@senai.com.br'>support@senai.com.br</a></p></div>";
         }
@@ -106,9 +126,8 @@ function mostrarInformacoes(tipo) {
         mostrarLoading(false);
     }, 1000); // Simula um carregamento de 1 segundo
 }
-
 //Function para o carrosel
-
+/*
 window.onload = function() {
     const images = document.querySelectorAll('.carrossel-img');
     let currentIndex = 0;
@@ -123,3 +142,4 @@ window.onload = function() {
         images[currentIndex].classList.add('active');
     }, 6000); // 6000 = 6 seg
 };
+*/

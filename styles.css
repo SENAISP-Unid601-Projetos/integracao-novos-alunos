@@ -217,3 +217,72 @@ h1 {
     font-size: 1.2rem;
     margin-bottom: 2rem;
 }
+
+
+/*duvidas*/
+/* Estilo para o container principal */
+.duvidas-container {
+    background-color: #f5f5f5;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1 {
+    color: #d41508;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.duvida-item {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.duvida-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+}
+
+.duvida-header i {
+    color: #d41508;
+    font-size: 1.8rem;
+}
+
+.duvida-header h3 {
+    color: #333;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.duvida-item p {
+    color: #555;
+    line-height: 1.6;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+/* Adicionando animação ao aparecer */
+.duvida-item {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
