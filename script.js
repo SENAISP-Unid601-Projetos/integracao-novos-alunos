@@ -21,19 +21,19 @@ function carregarPlanta(planta) {
       [-22.004, -47.899],
       [-22.002, -47.897],
     ];
-    imagem = '/imagens/area1superior.png';
+    imagem = 'imagens/area1superior.png';
   } else if (planta === 'Piso Inferior') {
     bounds = [
       [-22.002, -47.899],
       [-22.0, -47.897],
     ];
-    imagem = '/imagens/area1inferior.png';
+    imagem = 'imagens/area1inferior.png';
   } else if (planta === 'Bloco Geral') {
     bounds = [
       [-22.003, -47.896],
       [-22.001, -47.894],
     ];
-    imagem = '/imagens/blocoB.png';
+    imagem = 'imagens/blocoB.png';
   }
 
   // Se houver uma imagem definida, adiciona ao mapa
