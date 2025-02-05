@@ -7,14 +7,15 @@ function mostrarSubmenu(tipo) {
         document.getElementById("links-importantes").innerHTML = "";
         document.getElementById("submenu-mapa").style.display = "block";
         document.getElementById("informacao").innerHTML = "";
+        document.getElementById("map").style.display = "block"; // Mudança aqui
+    } else {
+        document.getElementById("submenu-mapa").style.display = "none";
         document.getElementById("map").style.display = "none";
     }
 }
 
-// Função para carregar a planta escolhida
 function carregarPlanta(planta) {
     mostrarLoading(true);
-    document.getElementById("map").style.display = "block";
     document.getElementById("informacao").innerHTML = `<h2>Mapa do SENAI - ${planta}</h2>`;
 
     // Remove o mapa existente, se houver
@@ -47,6 +48,7 @@ function carregarPlanta(planta) {
 
     mostrarLoading(false);
 }
+
 
 // Função para exibir ou ocultar o carregamento
 function mostrarLoading(show) {
@@ -82,7 +84,10 @@ function mostrarInformacoes(tipo) {
             `;
         } else if (tipo === 'contatos') {
             conteudo = `
-                <section class="efeitoFundo">
+                <div id='contatos'>
+                <h1>Contatos do SENAI</h1>
+                <h3>Dona Carla (ou Carlinha) - Setor de Apoio</h3>
+                <p>+55 16 2106-8723</p>
 
                 <div class="alinhamentoCard">
                 <div class="contato"><a class="numeroTelefone" href="https://wa.me/551621068723">
@@ -92,21 +97,6 @@ function mostrarInformacoes(tipo) {
                 <i class="fa fa-whatsapp" style="margin-right: 5px;"></i>
                 <p class="corTexto">+55 16 2106-8723</p>
                 </div>
-                </a>
-                </div>
-
-                
-                <div class="contato" href><a class="numeroTelefone" href="https://wa.me/5516981590197">
-                <img class="imagemCard" src="imagens/imgMarilia.jpg">
-                <h3>Marília<br>Setor de Apoio</h3>
-                <div class="iconeTelefone">
-                <i class="fa fa-whatsapp" style="margin-right: 5px;"></i>
-                <p class="corTexto">+55 16 98159-0197</p>
-                </div>
-                </a>
-                </div>
-                </div>
-                </section>
             `;
         } else if (tipo === 'duvidas') {
             conteudo = `
@@ -130,7 +120,7 @@ function mostrarInformacoes(tipo) {
         `
 
         } else if (tipo === 'apoio') {
-            conteudo = "<h2>Contato de Apoio</h2><p>Para qualquer ajuda, entre em contato pelo e-mail <a href='mailto:support@senai.com.br'>support@senai.com.br</a></p>";
+            conteudo = "<div id='apoio'><h2>Contato de Apoio</h2><p>Para qualquer ajuda, entre em contato pelo e-mail <a href='mailto:support@senai.com.br'>support@senai.com.br</a></p></div>";
         }
 
         document.getElementById("submenu-mapa").innerHTML = "";
