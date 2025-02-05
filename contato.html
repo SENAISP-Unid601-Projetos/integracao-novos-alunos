@@ -114,6 +114,7 @@
       }
 
       .contact-card {
+        cursor: pointer;
         background: var(--text-light);
         padding: 2rem;
         border-radius: var(--border-radius);
@@ -128,25 +129,21 @@
 
       .contact-header {
         display: flex;
+        flex-direction: column;
         align-items: center;
         gap: 1rem;
         margin-bottom: 1.5rem;
         color: var(--senai-blue);
       }
 
-      .contact-icon {
-        width: 40px;
-        height: 40px;
-        background: var(--accent-yellow);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
       .contact-info {
         font-size: 1.1rem;
         margin-bottom: 1.5rem;
+      }
+
+      .contact-image {
+        width: 80%;
+        border-radius: 50%;
       }
 
       .contact-phone {
@@ -219,8 +216,8 @@
         align-items: center;
         justify-content: center;
         transition: var(--transition);
-        text-decoration: none;
         color: #ffffff;
+        text-decoration: none;
       }
 
       .footer-social a:hover {
@@ -296,12 +293,12 @@
           <article class="contact-card">
             <div class="contact-header">
               <div class="contact-icon">
-                <i class="fas fa-user-tie"></i>
+                <img src="imagens/carla.jpg" class="contact-image" />
               </div>
               <h2>Dona Carla (Carlinha)<br /><small>Setor de Apoio</small></h2>
             </div>
             <div class="contact-info">
-              <a href="tel:+551621068723" class="contact-phone">
+              <a href="https://wa.me/551621068723" class="contact-phone">
                 <i class="fas fa-phone"></i>
                 (16) 2106-8723
               </a>
@@ -312,12 +309,12 @@
           <article class="contact-card">
             <div class="contact-header">
               <div class="contact-icon">
-                <i class="fas fa-headset"></i>
+                <img src="imagens/imgMarilia.jpg" class="contact-image" />
               </div>
               <h2>Marília<br /><small>Setor de Apoio</small></h2>
             </div>
             <div class="contact-info">
-              <a href="tel:+5516981590197" class="contact-phone">
+              <a href="https://wa.me/5516981590197" class="contact-phone">
                 <i class="fas fa-mobile-alt"></i>
                 (16) 98159-0197
               </a>
@@ -338,7 +335,14 @@
                 >senaisaocarlos@sp.senai.br</a
               >
             </li>
-            <li>R. Cândido Padim, 25 - Vila Prado</li>
+            <li>
+              <a
+                href="https://www.google.com/maps/place/Faculdade+de+Tecnologia+e+Escola+SENAI+Antonio+Adolpho+Lobbe/@-22.0233959,-47.8997887,17z/data=!3m1!4b1!4m6!3m5!1s0x94b8773ea69f4245:0xe68d5a9f2a93fb33!8m2!3d-22.0234009!4d-47.8972138!16s%2Fg%2F1tdfd5tl?entry=ttu&g_ep=EgoyMDI1MDIwMy4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                rel="noopener noreferrer"
+                >R. Cândido Padim, 25 - Vila Prado</a
+              >
+            </li>
           </ul>
         </div>
 
@@ -355,13 +359,25 @@
         <div class="footer-section">
           <h3>Redes Sociais</h3>
           <div class="footer-social">
-            <a href="#" aria-label="Facebook">
+            <a
+              href="https://www.facebook.com/senaisaocarlos/"
+              target="_blank"
+              aria-label="Facebook"
+            >
               <i class="fab fa-facebook-f"></i>
             </a>
-            <a href="#" aria-label="Instagram">
+            <a
+              href="https://www.instagram.com/senaisaocarlos601/"
+              target="_blank"
+              aria-label="Instagram"
+            >
               <i class="fab fa-instagram"></i>
             </a>
-            <a href="#" aria-label="LinkedIn">
+            <a
+              href="https://www.linkedin.com/school/senai-sp/"
+              target="_blank"
+              aria-label="LinkedIn"
+            >
               <i class="fab fa-linkedin-in"></i>
             </a>
           </div>
