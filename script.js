@@ -3,6 +3,8 @@ let map;
 // Função para mostrar o submenu do mapa
 function mostrarSubmenu(tipo) {
     if (tipo === 'mapa') {
+
+        document.getElementById("links-importantes").innerHTML = "";
         document.getElementById("submenu-mapa").style.display = "block";
         document.getElementById("informacao").innerHTML = "";
         document.getElementById("map").style.display = "none";
@@ -58,18 +60,25 @@ function mostrarLoading(show) {
 // Função para mostrar outras informações (regras, contatos, etc.)
 function mostrarInformacoes(tipo) {
     mostrarLoading(true);
-    setTimeout(function() {
+    setTimeout(function () {
         let conteudo = '';
         if (tipo === 'regras') {
             conteudo = `
-                <h2>Regras Básicas</h2>
-                <ul>
-                    <li><img src="imagens/relogio.png" style="width: 20px; height: 20px; margin-right: 10px;">Respeitar os horários.</li>
-                    <p>Aqui no SENAI, chegar e sair nos horários combinados é extremamente importante!</p>
-                    <p>Além de te valorizar como aluno, demonstra respeito ao docente.</p>
-                    <li><img src="imagens/logo.png" style="width: 20px; height: 20px; margin-right: 10px;">Utilizar uniforme e crachá todos os dias.</li>
+                    <p style='border: dashed 2px red; padding: 15px; font-size:15px; color: #333'> No SENAI, temos muitas regras e todas elas são importantes. Mas fizemos aqui um resumo bem básico pra pra vocês se sentirem confiantes no início da sua jornada.<p>
+
+                    <h2>Regras Básicas</h2>
+                    
+                    <img src="imagens/relogio.png" style="width: 20px; height: 20px; margin-right: 10px;">Respeitar os horários.
+                    Aqui no SENAI, chegar e sair nos horários combinados é extremamente importante! Além de te valorizar como aluno, demonstra respeito ao docente.</p>
+
+                    
+                    <p>
+                    <img src="imagens/logo.png" style="width: 20px; height: 20px; margin-right: 10px;">Utilizar uniforme e crachá todos os dias.
+
+                    </p>
+
                     <p>O uso do uniforme e crachá, em lugar visível, faz parte das regras indiscutíveis do SENAI.</p>
-                </ul>
+        
             `;
         } else if (tipo === 'contatos') {
             conteudo = `
@@ -77,7 +86,7 @@ function mostrarInformacoes(tipo) {
 
                 <div class="alinhamentoCard">
                 <div class="contato"><a class="numeroTelefone" href="https://wa.me/551621068723">
-                <img class="imagemCard" src="imagens/imgMarilia.jpg">
+                <img class="imagemCard" src="imagens/carla.jpg">
                 <h3>Carla (ou Carlinha)<br>Setor de Apoio</h3>
                 <div class="iconeTelefone">
                 <i class="fa fa-whatsapp" style="margin-right: 5px;"></i>
@@ -102,19 +111,42 @@ function mostrarInformacoes(tipo) {
         } else if (tipo === 'duvidas') {
             conteudo = `
             <h1>Dúvidas Frequentes</h1>
-            <h3>1. O que é setor de apoio?</h3>
-            <p>O setor de apoio é, literalmente, um local de apoio e acolhimento ao aluno. Você pode e deve procurá-lo sempre que tiver dúvidas sobre o funcionamento da escola. Além disso, em caso de problemas, sempre notifique o setor de apoio. Lá, você receberá orientações sobre o que fazer.</p>
-            <p>Resumidamente, é um local onde você poderá ir sem medo de julgamentos. O acolhimento é certo!</p>
-            <h3>2. Posso usar o celular fora do horário de aula?</h3>"
-            <p>Não. Devido a preocupação dos docentes da escola com seus alunos, é permitido usar o celular na estrada e saída. Porém, o uso em sala de aula ou intervalos é, e continua sendo, extritamente proibida!<p>
-
-            ;`
+            <div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">1. O que é setor de apoio?</div>
+                <div class="accordion-content">
+                    O setor de apoio é, literalmente, um local de apoio e acolhimento ao aluno. Você pode e deve procurá-lo sempre que tiver dúvidas sobre o funcionamento da escola. Além disso, em caso de problemas, sempre notifique o setor de apoio. Lá, você receberá orientações sobre o que fazer.
+                    <br><br>
+                    Resumidamente, é um local onde você poderá ir sem medo de julgamentos. O acolhimento é certo!
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">2. Posso usar o celular fora do horário de aula?</div>
+                <div class="accordion-content">
+                    Não. Devido à preocupação dos docentes da escola com seus alunos, é permitido usar o celular na entrada e saída. Porém, o uso em sala de aula ou intervalos é, e continua sendo, estritamente proibido!
+                </div>
+            </div>
+        </div>
+        `
 
         } else if (tipo === 'apoio') {
             conteudo = "<h2>Contato de Apoio</h2><p>Para qualquer ajuda, entre em contato pelo e-mail <a href='mailto:support@senai.com.br'>support@senai.com.br</a></p>";
         }
 
+        document.getElementById("submenu-mapa").innerHTML = "";
+        document.getElementById("map").style.display = "none";
+        document.getElementById("links-importantes").innerHTML = "";
+        document.getElementById("informacao").innerHTML = "";
         document.getElementById("informacao").innerHTML = conteudo;
         mostrarLoading(false);
     }, 1000); // Simula um carregamento de 1 segundo
+}
+
+function toggleAccordion(element) {
+    let content = element.nextElementSibling;
+    if (content.style.display === "block") {
+        content.style.display = "none";
+    } else {
+        content.style.display = "block";
+    }
 }

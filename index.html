@@ -1,41 +1,313 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapa do SENAI São Carlos</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="style-contato/style.css">
-    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Bem-vindo ao SENAI São Carlos - Centro de Excelência em Educação Profissional">
+    <title>Bem-vindo ao SENAI São Carlos</title>
+    <style>
+        /* Reset e Variáveis */
+        :root {
+            --senai-blue: #0055A4;
+            --accent-yellow: #FFD100;
+            --text-dark: #2D2D2D;
+            --text-light: #FFFFFF;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --section-spacing: 4rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .main-header {
+            background: var(--senai-blue);
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .logo-link {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-link:hover {
+            transform: translateY(-2px);
+        }
+
+        .logo {
+            height: 50px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(0, 85, 164, 0.9), rgba(0, 85, 164, 0.8)),
+                url('imagens/fachada-senai.jpg') center/cover;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            animation: slideUp 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            font-weight: 300;
+            animation: fadeIn 1s 0.5s both;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1.2rem 2.5rem;
+            background: var(--accent-yellow);
+            color: var(--text-dark);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Animations */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 0.95;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .cta-button {
+                padding: 1rem 2rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .logo {
+                height: 40px;
+            }
+        }
+    </style>
+
+    <style>
+        .welcome-cards {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            text-align: center;
+            color: var(--text-dark);
+        }
+
+        .card h3 {
+            margin-bottom: 0.8rem;
+            font-size: 1.5rem;
+            color: var(--senai-blue);
+        }
+
+        .card p {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card span {
+            font-style: italic;
+            font-size: 0.9rem;
+            color: #555;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Bem-vindo ao SENAI São Carlos</h1>
-    <div class="menu">
-        <button onclick="mostrarSubmenu('mapa')">Mapa do SENAI</button>
-        <button onclick="mostrarInformacoes('regras')">Regras Básicas</button>
-        <button onclick="mostrarInformacoes('contatos')">Contatos de Emergência</button>
-        <button onclick="mostrarInformacoes('duvidas')">Dúvidas Frequentes</button>
-        <button onclick="mostrarInformacoes('apoio')">Contato de Apoio</button>
-    </div>
+    <header class="main-header">
+        <a href="index.html" class="logo-link">
+            <img src="/imagens/logoSenaiWhite.png" alt="SENAI São Carlos" class="logo">
+        </a>
+    </header>
 
-    <!-- Submenu para escolher o mapa -->
-    <div id="submenu-mapa" style="display: none;">
-        <button onclick="carregarPlanta('pisoSuperior')">Piso Superior</button>
-        <button onclick="carregarPlanta('pisoInferior')">Piso Inferior</button>
-        <button onclick="carregarPlanta('blocoGeral')">Bloco Geral</button>
-    </div>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Bem-vindo ao SENAI São Carlos</h1>
+                <p class="hero-subtitle">
+                    Transformando vidas através da educação profissional de excelência
+                </p>
 
-    <!-- Conteúdo principal -->
-    <div id="conteudo">
-        <div id="loading" style="display:none;">Carregando...</div>
-        <div id="informacao"></div>
-    </div>
+                <a href="regras.html" class="cta-button">
+                    Explorar Campus
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+                <br><br><br>
+                <!-- Cards de boas-vindas -->
+                <div class="welcome-cards" id="welcome-cards">
+                    <!-- Os cartões serão preenchidos dinamicamente -->
+                </div>
+                
+            </div>
+        </section>
+    </main>
 
-    <!-- Mapa -->
-    <div id="map" style="width: 100%; height: 60vh; display: none;"></div>
+    <script>
+        // Animação de scroll suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
 
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script src="script.js"></script>
+        // Efeito parallax no hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            document.querySelector('.hero').style.backgroundPositionY = `${scrolled * 0.5}px`;
+        });
+
+        // Intersection Observer para animações
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, { threshold: 0.1 });
+    </script>
+
+    <script>
+        async function fetchMessages() {
+            const url = "https://sheets.googleapis.com/v4/spreadsheets/1-QY2i7Dyax1K7YJp3DU1_55HqfnPRizW0VyUeblyLC8/values/mensagens!A1:Z200?majorDimension=ROWS&key=AIzaSyAVbkJxfxctVsI0DxtReILS3MYZaTxWoUw";
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                const messages = data.values.slice(1); // Remove cabeçalho
+                const container = document.getElementById("welcome-cards");
+                container.innerHTML = "";
+
+                messages.forEach(([title, message, sender]) => {
+                    const card = document.createElement("div");
+                    card.classList.add("card");
+                    card.innerHTML = `
+                    <h3>${title}</h3>
+                    <p>${message}</p>
+                    <span>- ${sender}</span>
+                `;
+                    container.appendChild(card);
+                });
+            } catch (error) {
+                console.error("Erro ao buscar mensagens: ", error);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", fetchMessages);
+    </script>
 </body>
+
 </html>

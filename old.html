@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa do SENAI São Carlos</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="style-contato/style.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+
+            padding: 20px;
+            padding-top: 80px;
+            font-family: Arial, sans-serif;
+        }
+
+        .menu-btn {
+            font-size: 30px;
+            cursor: pointer;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            background-color: #111;
+            padding-top: 60px;
+            transition: 0.3s;
+        }
+
+        .sidenav a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidenav a:hover {
+            background-color: #575757;
+        }
+
+        .sidenav .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 36px;
+            cursor: pointer;
+        }
+
+        .accordion {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .accordion-item {
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            background: #f1f1f1;
+            padding: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 10px;
+            background: #fff;
+        }
+    </style>
+</head>
+
+
+<body style="display: flex; flex-direction: column;">
+
+    <span class="menu-btn" onclick="openNav()">&#9776;</span>
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
+        <a href="#" onclick="closeNav(); mostrarSubmenu('mapa')">Mapa do SENAI</a>
+        <a href="" onclick="closeNav(); mostrarInformacoes('regras')">Regras Básicas</a>
+        <a href="html/contato.html" onclick="closeNav(); mostrarInformacoes('contatos')">Contatos de Emergência</a>
+        <a href="html/duvidas.html" onclick="closeNav(); mostrarInformacoes('duvidas')">Dúvidas Frequentes</a>
+        <a href="#" onclick="closeNav(); mostrarInformacoes('apoio')">Sobre este app :)</a>
+    </div>
+
+    <img src="imagens/senai-logo.png" width="320" />
+    <h1>SENAI São Carlos</h1>
+    <div id='links-importantes'>
+        <h3>Bem-vindos calouros :)</h3>
+
+
+
+        <p>
+            Este aplicativo foi desenvolvido para facilitar a sua vida aqui dentro do SENAI.
+        </p>
+
+
+        <h2 class="mb-4 text-primary">📚 Links Importantes:</h2>
+
+
+        <span>🔗 <a style="text-decoration: none;" href="https://sp.senai.br/unidade/saocarlos/informacoes-aos-alunos"
+                class="custom-link" target="_blank">Informações para alunos do SENAI</a>
+        </span><br>
+        <span>⏰ <a style="text-decoration: none;" href="https://senaisaocarlos.edupage.org/timetable/"
+                class="custom-link" target="_blank">Acesse o
+                seu Horário Escolar</a></span><br>
+        <span>📅 <a style="text-decoration: none;"
+                href="https://cronos-media.sesisenaisp.org.br/api/media/1-0/files?file=arq_155_250116_1b77d355-229e-4651-b69b-16987f9be90d.pdf"
+                class="custom-link" target="_blank">Calendário Escolar</a></span><br>
+        <span>🎓 <a style="text-decoration: none;" href="https://pess.sesisenaispedu.org.br/Portal.aspx"
+                class="custom-link" target="_blank">Portal
+                Educacional</a></span><br>
+
+    </div>
+
+
+    <div id="submenu-mapa" style="display: none;">
+        <button onclick="carregarPlanta('pisoSuperior')">Piso Superior</button>
+        <button onclick="carregarPlanta('pisoInferior')">Piso Inferior</button>
+        <button onclick="carregarPlanta('blocoGeral')">Bloco Geral</button>
+    </div>
+
+    <div id="conteudo" style="display: flex; flex-direction: column;">
+        <div id="loading" style="display:none;">Carregando...</div>
+        <div id="informacao"></div>
+    </div>
+
+    <div id="map" style="width: 100%; height: 60vh; display: none;"></div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.left = "0";
+        }
+        function closeNav() {
+            console.log("entrei")
+            document.getElementById("mySidenav").style.left = "-250px";
+        }
+    </script>
+</body>
+
+
+</html>
