@@ -6,9 +6,11 @@ function mostrarSubmenu(tipo) {
         document.getElementById("submenu-mapa").style.display = "block";
         document.getElementById("informacao").innerHTML = "";
         document.getElementById("map").style.display = "none";
+    } else{
+        document.getElementById("submenu-mapa").style.display = "none";
+        document.getElementById("map").style.display = "none";
     }
 }
-
 // Função para carregar a planta escolhida
 function carregarPlanta(planta) {
     mostrarLoading(true);
@@ -58,6 +60,7 @@ function mostrarLoading(show) {
 // Função para mostrar outras informações (regras, contatos, etc.)
 function mostrarInformacoes(tipo) {
     mostrarLoading(true);
+    mostrarSubmenu(tipo);
     setTimeout(function() {
         let conteudo = '';
         if (tipo === 'regras') {
@@ -73,48 +76,50 @@ function mostrarInformacoes(tipo) {
             `;
         } else if (tipo === 'contatos') {
             conteudo = `
-                <section class="efeitoFundo">
+                <div id='contatos'>
+                <h1>Contatos do SENAI</h1>
+                <h3>Dona Carla (ou Carlinha) - Setor de Apoio</h3>
+                <p>+55 16 2106-8723</p>
 
-                <div class="alinhamentoCard">
-                <div class="contato"><a class="numeroTelefone" href="https://wa.me/551621068723">
-                <img class="imagemCard" src="imagens/imgMarilia.jpg">
-                <h3>Carla (ou Carlinha)<br>Setor de Apoio</h3>
-                <div class="iconeTelefone">
-                <i class="fa fa-whatsapp" style="margin-right: 5px;"></i>
-                <p class="corTexto">+55 16 2106-8723</p>
+                <h3>Marília - Setor de Apoio</h3>
+                <p>+55 16 98159-0197</p>
                 </div>
-                </a>
-                </div>
-
-                
-                <div class="contato" href><a class="numeroTelefone" href="https://wa.me/5516981590197">
-                <img class="imagemCard" src="imagens/imgMarilia.jpg">
-                <h3>Marília<br>Setor de Apoio</h3>
-                <div class="iconeTelefone">
-                <i class="fa fa-whatsapp" style="margin-right: 5px;"></i>
-                <p class="corTexto">+55 16 98159-0197</p>
-                </div>
-                </a>
-                </div>
-                </div>
-                </section>
             `;
         } else if (tipo === 'duvidas') {
             conteudo = `
+            <div id='duvidas'>
             <h1>Dúvidas Frequentes</h1>
             <h3>1. O que é setor de apoio?</h3>
             <p>O setor de apoio é, literalmente, um local de apoio e acolhimento ao aluno. Você pode e deve procurá-lo sempre que tiver dúvidas sobre o funcionamento da escola. Além disso, em caso de problemas, sempre notifique o setor de apoio. Lá, você receberá orientações sobre o que fazer.</p>
             <p>Resumidamente, é um local onde você poderá ir sem medo de julgamentos. O acolhimento é certo!</p>
             <h3>2. Posso usar o celular fora do horário de aula?</h3>"
             <p>Não. Devido a preocupação dos docentes da escola com seus alunos, é permitido usar o celular na estrada e saída. Porém, o uso em sala de aula ou intervalos é, e continua sendo, extritamente proibida!<p>
-
-            ;`
+            </div>
+            `;
 
         } else if (tipo === 'apoio') {
-            conteudo = "<h2>Contato de Apoio</h2><p>Para qualquer ajuda, entre em contato pelo e-mail <a href='mailto:support@senai.com.br'>support@senai.com.br</a></p>";
+            conteudo = "<div id='apoio'><h2>Contato de Apoio</h2><p>Para qualquer ajuda, entre em contato pelo e-mail <a href='mailto:support@senai.com.br'>support@senai.com.br</a></p></div>";
         }
+
 
         document.getElementById("informacao").innerHTML = conteudo;
         mostrarLoading(false);
     }, 1000); // Simula um carregamento de 1 segundo
 }
+
+//Function para o carrosel
+
+window.onload = function() {
+    const images = document.querySelectorAll('.carrossel-img');
+    let currentIndex = 0;
+    
+    images[currentIndex].classList.add('active');
+    
+    setInterval(function() {
+        images[currentIndex].classList.remove('active');
+        
+        currentIndex = (currentIndex + 1) % images.length;
+        
+        images[currentIndex].classList.add('active');
+    }, 6000); // 6000 = 6 seg
+};

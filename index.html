@@ -5,19 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mapa do SENAI São Carlos</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="style-contato/style.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Bem-vindo ao SENAI São Carlos</h1>
-    <div class="menu">
-        <button onclick="mostrarSubmenu('mapa')">Mapa do SENAI</button>
-        <button onclick="mostrarInformacoes('regras')">Regras Básicas</button>
-        <button onclick="mostrarInformacoes('contatos')">Contatos de Emergência</button>
-        <button onclick="mostrarInformacoes('duvidas')">Dúvidas Frequentes</button>
-        <button onclick="mostrarInformacoes('apoio')">Contato de Apoio</button>
-    </div>
+    <header>
+        <img src="imagens/logoSenaiWhite.png" alt="">
+        <div>
+            <p onclick="mostrarInformacoes('mapa')" class="headerButtons">Mapa</p>
+            <p><a href="regras.html" class="headerButtons">Regras</a></p>
+            <p onclick="mostrarInformacoes('contatos')" class="headerButtons">Contatos</p>
+            <p onclick="mostrarInformacoes('duvidas')" class="headerButtons">Dúvidas</p>
+            <p onclick="mostrarInformacoes('apoio')" class="headerButtons">Apoio</p>
+        </div>
+    </header>
+    <section class="imgprincipal">
+        <div class="hero-content">
+            <h1>Bem-vindo ao SENAI</h1>
+            <p>Educação profissional que transforma vidas</p>
+        </div>
+    </section>
+
+    <!-- Carrossel de imagens -->
+    <div id="carrossel" class="carrossel-container">
+        <img class="carrossel-img" src="/imagens/fundo.png" alt="Imagem 1">
+        <img class="carrossel-img" src="/imagens/maquinas.png" alt="Imagem 2">
+        <img class="carrossel-img" src="/imagens/biblioteca.png" alt="Imagem 3">
 
     <!-- Submenu para escolher o mapa -->
     <div id="submenu-mapa" style="display: none;">
